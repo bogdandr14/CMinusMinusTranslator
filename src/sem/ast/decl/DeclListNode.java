@@ -45,7 +45,6 @@ public class DeclListNode extends ASTnode {
 		}
 	}
 
-	// How many declared variables do we have //
 	public int numDecl() {
 		return myDecls.size();
 	}

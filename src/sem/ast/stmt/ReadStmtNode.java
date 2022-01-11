@@ -2,6 +2,7 @@ package sem.ast.stmt;
 
 import java.io.PrintWriter;
 
+import sem.ErrMsg;
 import sem.ast.exp.ExpNode;
 import sem.ast.type.Type;
 import sem.symb.SymTable;
@@ -18,17 +19,13 @@ public class ReadStmtNode extends StmtNode {
 	public void typeCheck(Type retType) {
 		Type type = myExp.typeCheck();
 
-//		if (type.isFnType()) {
-//			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Attempt to read a function");
-//		}
-//
-//		if (type.isArrayDefType()) {
-//			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Attempt to read a array index");
-//		}
-//
-//		if (type.isArrayType()) {
-//			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Attempt to read a array variable");
-//		}
+		if (type.isFnType()) {
+			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Attempt to read a function");
+		}
+
+		if (type.isArrayType()) {
+			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Attempt to read a array variable");
+		}
 	}
 
 	public void unparse(PrintWriter p, int indent) {

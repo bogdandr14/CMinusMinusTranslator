@@ -8,6 +8,8 @@ public class main {
 		String basePath = new File("").getAbsolutePath();
 		String[] files = new String[2];
 		files[0] = basePath + "\\src\\input.txt";
+		files[1] = basePath + "\\src\\output.txt";
+
 		Translator t = new Translator(files);
 		t.run();
 	}

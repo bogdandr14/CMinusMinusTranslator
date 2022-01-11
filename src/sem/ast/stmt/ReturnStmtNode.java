@@ -2,6 +2,7 @@ package sem.ast.stmt;
 
 import java.io.PrintWriter;
 
+import sem.ErrMsg;
 import sem.ast.exp.ExpNode;
 import sem.ast.type.Type;
 import sem.symb.SymTable;
@@ -18,23 +19,23 @@ public class ReturnStmtNode extends StmtNode {
     }
 	
 	public void typeCheck(Type retType) {
-//		if (myExp != null) { // return value given
-//			Type type = myExp.typeCheck();
-//
-//			if (retType.isVoidType()) {
-//				ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Return with a value in a void function");
-//			}
-//
-//			else if (!retType.isErrorType() && !type.isErrorType() && !retType.equals(type)) {
-//				ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Bad return value");
-//			}
-//		}
-//
-//		else { // no return value given -- ok if this is a void function
-//			if (!retType.isVoidType()) {
-//				ErrMsg.fatal(0, 0, "Missing return value");
-//			}
-//		}
+		if (myExp != null) { // return value given
+			Type type = myExp.typeCheck();
+
+			if (retType.isVoidType()) {
+				ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Return with a value in a void function");
+			}
+
+			else if (!retType.isErrorType() && !type.isErrorType() && !retType.equals(type)) {
+				ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Bad return value");
+			}
+		}
+
+		else { // no return value given -- ok if this is a void function
+			if (!retType.isVoidType()) {
+				ErrMsg.fatal(0, 0, "Missing return value");
+			}
+		}
 
 	}
 

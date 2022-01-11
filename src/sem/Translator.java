@@ -28,11 +28,11 @@ public class Translator {
 
 		try {
 			setInfile(args[0]);
-			// setOutfile(args[1]);
+			setOutfile(args[1]);
 		} catch (BadInfileException e) {
 			pukeAndDie(e.getMessage());
-//		} catch (BadOutfileException e) {
-//			pukeAndDie(e.getMessage());
+		} catch (BadOutfileException e) {
+			pukeAndDie(e.getMessage());
 		}
 	}
 
@@ -123,12 +123,12 @@ public class Translator {
 		}
 		
 		astRoot.nameAnalysis();
-		astRoot.typeCheck(); // perform type check
+		//astRoot.typeCheck(); // perform type check
 		if (ErrMsg.getErr()) {
 			return Translator.RESULT_TYPE_ERROR;
 		}
 
-		// astRoot.unparse(outFile, 0); // unparse the tree
+		astRoot.unparse(outFile, 0); // unparse the tree
 
 		return Translator.RESULT_CORRECT;
 	}

@@ -3,14 +3,18 @@ package sem.ast.type;
 import java.io.PrintWriter;
 
 public class ArrayNode extends TypeNode {
-    public ArrayNode(TypeNode type, int arraySyze) {
+    public ArrayNode(TypeNode type, int arraySize) {
     	myType = type;
+    	mySize = arraySize;
     }
 
     public TypeNode typeNode() {
         return myType;
     }
 
+    public int getSize() {
+    	return mySize;
+    }
     /**
      * type
      */
@@ -19,7 +23,7 @@ public class ArrayNode extends TypeNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        p.print(myType.type() + " array[" + mySize + "]");
+        p.print(myType.type());
     }
 
     // 1 kid

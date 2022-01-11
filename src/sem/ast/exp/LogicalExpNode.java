@@ -1,6 +1,8 @@
 package sem.ast.exp;
 
+import sem.ErrMsg;
 import sem.ast.type.BoolType;
+import sem.ast.type.ErrorType;
 import sem.ast.type.Type;
 
 public abstract class LogicalExpNode extends BinaryExpNode {
@@ -13,19 +15,19 @@ public abstract class LogicalExpNode extends BinaryExpNode {
 		Type type2 = myExp2.typeCheck();
 		Type retType = new BoolType();
 
-//		if (!type1.isErrorType() && !type1.isBoolType()) {
-//			ErrMsg.fatal(myExp1.lineNum(), myExp1.charNum(), "Logical operator applied to non-bool operand");
-//			retType = new ErrorType();
-//		}
-//
-//		if (!type2.isErrorType() && !type2.isBoolType()) {
-//			ErrMsg.fatal(myExp2.lineNum(), myExp2.charNum(), "Logical operator applied to non-bool operand");
-//			retType = new ErrorType();
-//		}
-//
-//		if (type1.isErrorType() || type2.isErrorType()) {
-//			retType = new ErrorType();
-//		}
+		if (!type1.isErrorType() && !type1.isBoolType()) {
+			ErrMsg.fatal(myExp1.lineNum(), myExp1.charNum(), "Logical operator applied to non-bool operand");
+			retType = new ErrorType();
+		}
+
+		if (!type2.isErrorType() && !type2.isBoolType()) {
+			ErrMsg.fatal(myExp2.lineNum(), myExp2.charNum(), "Logical operator applied to non-bool operand");
+			retType = new ErrorType();
+		}
+
+		if (type1.isErrorType() || type2.isErrorType()) {
+			retType = new ErrorType();
+		}
 
 		return retType;
 	}

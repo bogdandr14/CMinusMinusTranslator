@@ -18,6 +18,10 @@ public class IdNode extends ExpNode {
         mySym = sym;
     }
 
+	public SemSym sym() {
+        return mySym;
+    }
+	
 	public String name() {
 		return myStrVal;
 	}
@@ -40,13 +44,13 @@ public class IdNode extends ExpNode {
     }
 
 	public Type typeCheck() {
-//        if (mySym != null) {
-//            return mySym.getType();
-//        }
-//        else {
-//            System.err.println("ID with null sym field in IdNode.typeCheck");
-//            System.exit(-1);
-//        }
+        if (mySym != null) {
+            return mySym.getType();
+        }
+        else {
+            System.err.println("ID with null sym field in IdNode.typeCheck at"+ myLineNum + " " + myCharNum + " " + myStrVal);
+            System.exit(-1);
+        }
 		return null;
 	}
 

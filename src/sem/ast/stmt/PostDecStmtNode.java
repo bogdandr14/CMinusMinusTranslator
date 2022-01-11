@@ -2,6 +2,7 @@ package sem.ast.stmt;
 
 import java.io.PrintWriter;
 
+import sem.ErrMsg;
 import sem.ast.exp.ExpNode;
 import sem.ast.type.Type;
 import sem.symb.SymTable;
@@ -18,9 +19,9 @@ public class PostDecStmtNode extends StmtNode {
 	public void typeCheck(Type retType) {
 		Type type = myExp.typeCheck();
 
-//		if (!type.isErrorType() && !type.isIntType()) {
-//			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Arithmetic operator applied to non-numeric operand");
-//		}
+		if (!type.isErrorType() && !type.isIntType()) {
+			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Arithmetic operator applied to non-numeric operand");
+		}
 	}
 
 	public void unparse(PrintWriter p, int indent) {

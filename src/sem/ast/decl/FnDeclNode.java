@@ -65,8 +65,6 @@ public class FnDeclNode extends DeclNode {
             System.exit(-1);
         }
 
-        //TODO how do handle the variant size of structs???
-
         // formals //
     		this.formalsSize = typeList.size() * 4;
     		// locals //

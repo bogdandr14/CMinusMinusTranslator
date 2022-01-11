@@ -11,7 +11,6 @@ import sem.ast.type.Type;
  * information about the parameters.
  */
 public class FnSym extends SemSym {
-    // new fields
     private Type returnType;
     private int numParams;
     private List<Type> paramTypes;
@@ -41,7 +40,6 @@ public class FnSym extends SemSym {
     }
 
     public String toString() {
-        // make list of formals
         String str = "";
         boolean notfirst = false;
         for (Type type : paramTypes) {

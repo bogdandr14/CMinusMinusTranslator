@@ -10,7 +10,7 @@ return gcd (v, u-u/v*v) ;
 }
 void main()
 {
-int x[6];
+int x[8];
 x[0] = 1;
 x[1] = 2;
 x[2] = gcd(x[0],x[1]);

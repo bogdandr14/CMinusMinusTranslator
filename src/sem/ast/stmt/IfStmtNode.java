@@ -2,6 +2,7 @@ package sem.ast.stmt;
 
 import java.io.PrintWriter;
 
+import sem.ErrMsg;
 import sem.ast.decl.DeclListNode;
 import sem.ast.exp.ExpNode;
 import sem.ast.type.Type;
@@ -32,9 +33,9 @@ public class IfStmtNode extends StmtNode {
 	public void typeCheck(Type retType) {
 		Type type = myExp.typeCheck();
 
-//		if (!type.isErrorType() && !type.isBoolType()) {
-//			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Non-bool expression used as an if condition");
-//		}
+		if (!type.isErrorType() && !type.isBoolType()) {
+			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Non-bool expression used as an if condition");
+		}
 
 		myStmtList.typeCheck(retType);
 	}

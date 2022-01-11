@@ -48,8 +48,4 @@ public abstract class Type {
     public boolean isArrayType() {
         return false;
     }
-
-    public boolean isArrayDefType() {
-        return false;
-    }
 }

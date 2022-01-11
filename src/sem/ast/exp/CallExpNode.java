@@ -3,8 +3,10 @@ package sem.ast.exp;
 import java.io.PrintWriter;
 import java.util.LinkedList;
 
+import sem.ErrMsg;
 import sem.ast.type.ErrorType;
 import sem.ast.type.Type;
+import sem.symb.FnSym;
 import sem.symb.SymTable;
 
 public class CallExpNode extends ExpNode {
@@ -32,25 +34,25 @@ public class CallExpNode extends ExpNode {
     }
 
 	public Type typeCheck() {
-//		if (!myId.typeCheck().isFnType()) {
-//			ErrMsg.fatal(myId.lineNum(), myId.charNum(), "Attempt to call a non-function");
-//			return new ErrorType();
-//		}
+		if (!myId.typeCheck().isFnType()) {
+			ErrMsg.fatal(myId.lineNum(), myId.charNum(), "Attempt to call a non-function");
+			return new ErrorType();
+		}
 
-//        FnSym fnSym = (FnSym)(myId.sym());
-//
-//        if (fnSym == null) {
-//            System.err.println("null sym for Id in CallExpNode.typeCheck");
-//            System.exit(-1);
-//        }
-//
-//        if (myExpList.size() != fnSym.getNumParams()) {
-//            ErrMsg.fatal(myId.lineNum(), myId.charNum(),
-//                         "Function call with wrong number of args");
-//            return fnSym.getReturnType();
-//        }
-//
-//        myExpList.typeCheck(fnSym.getParamTypes());
+        FnSym fnSym = (FnSym)(myId.sym());
+
+        if (fnSym == null) {
+            System.err.println("null sym for Id in CallExpNode.typeCheck");
+            System.exit(-1);
+        }
+
+        if (myExpList.size() != fnSym.getNumParams()) {
+            ErrMsg.fatal(myId.lineNum(), myId.charNum(),
+                         "Function call with wrong number of args");
+            return fnSym.getReturnType();
+        }
+
+        myExpList.typeCheck(fnSym.getParamTypes());
 		return null;
 	}
 

@@ -2,7 +2,9 @@ package sem.ast.exp;
 
 import java.io.PrintWriter;
 
+import sem.ErrMsg;
 import sem.ast.type.BoolType;
+import sem.ast.type.ErrorType;
 import sem.ast.type.Type;
 
 public class NotNode extends UnaryExpNode {
@@ -14,14 +16,14 @@ public class NotNode extends UnaryExpNode {
 		Type type = myExp.typeCheck();
 		Type retType = new BoolType();
 
-//		if (!type.isErrorType() && !type.isBoolType()) {
-//			ErrMsg.fatal(lineNum(), charNum(), "Logical operator applied to non-bool operand");
-//			retType = new ErrorType();
-//		}
-//
-//		if (type.isErrorType()) {
-//			retType = new ErrorType();
-//		}
+		if (!type.isErrorType() && !type.isBoolType()) {
+			ErrMsg.fatal(lineNum(), charNum(), "Logical operator applied to non-bool operand");
+			retType = new ErrorType();
+		}
+
+		if (type.isErrorType()) {
+			retType = new ErrorType();
+		}
 
 		return retType;
 	}
