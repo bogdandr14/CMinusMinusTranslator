@@ -6,9 +6,6 @@ public class BoolNode extends TypeNode {
 	public BoolNode() {
 	}
 
-	/**
-	 * type
-	 */
 	public Type type() {
 		return new BoolType();
 	}

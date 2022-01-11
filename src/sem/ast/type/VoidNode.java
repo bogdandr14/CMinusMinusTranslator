@@ -6,9 +6,6 @@ public class VoidNode extends TypeNode {
 	public VoidNode() {
 	}
 
-	/**
-	 * type
-	 */
 	public Type type() {
 		return new VoidType();
 	}

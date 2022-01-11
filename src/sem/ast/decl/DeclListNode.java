@@ -6,15 +6,27 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import sem.ast.ASTnode;
+import sem.symb.SymTable;
 
 public class DeclListNode extends ASTnode {
 	public DeclListNode(List<DeclNode> S) {
 		myDecls = S;
 	}
 
-	/**
-	 * typeCheck
-	 */
+	public void nameAnalysis(SymTable symTab) {
+        nameAnalysis(symTab, symTab);
+    }
+
+    public void nameAnalysis(SymTable symTab, SymTable globalTab) {
+        for (DeclNode node : myDecls) {
+            if (node instanceof VarDeclNode) {
+                ((VarDeclNode)node).nameAnalysis(symTab, globalTab);
+            } else {
+                node.nameAnalysis(symTab);
+            }
+        }
+    }
+	
 	public void typeCheck() {
 		for (DeclNode node : myDecls) {
 			node.typeCheck();

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import sem.ast.type.ErrorType;
 import sem.ast.type.Type;
+import sem.symb.SymTable;
 
 public class CallExpNode extends ExpNode {
 	public CallExpNode(IdNode name, ExpListNode elist) {
@@ -17,25 +18,19 @@ public class CallExpNode extends ExpNode {
 		myExpList = new ExpListNode(new LinkedList<ExpNode>());
 	}
 
-	/**
-	 * Return the line number for this call node. The line number is the one
-	 * corresponding to the function name.
-	 */
 	public int lineNum() {
 		return myId.lineNum();
 	}
 
-	/**
-	 * Return the char number for this call node. The char number is the one
-	 * corresponding to the function name.
-	 */
 	public int charNum() {
 		return myId.charNum();
 	}
+	
+	public void nameAnalysis(SymTable symTab) {
+        myId.nameAnalysis(symTab);
+        myExpList.nameAnalysis(symTab);
+    }
 
-	/**
-	 * typeCheck
-	 */
 	public Type typeCheck() {
 //		if (!myId.typeCheck().isFnType()) {
 //			ErrMsg.fatal(myId.lineNum(), myId.charNum(), "Attempt to call a non-function");

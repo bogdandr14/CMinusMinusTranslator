@@ -4,15 +4,17 @@ import java.io.PrintWriter;
 
 import sem.ast.exp.CallExpNode;
 import sem.ast.type.Type;
+import sem.symb.SymTable;
 
 public class CallStmtNode extends StmtNode {
 	public CallStmtNode(CallExpNode call) {
 		myCall = call;
 	}
 
-	/**
-	 * typeCheck
-	 */
+	public void nameAnalysis(SymTable symTab) {
+        myCall.nameAnalysis(symTab);
+    }
+	
 	public void typeCheck(Type retType) {
 		myCall.typeCheck();
 	}

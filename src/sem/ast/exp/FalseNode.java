@@ -11,23 +11,14 @@ public class FalseNode extends ExpNode {
 		myCharNum = charNum;
 	}
 
-	/**
-	 * Return the line number for this literal.
-	 */
 	public int lineNum() {
 		return myLineNum;
 	}
 
-	/**
-	 * Return the char number for this literal.
-	 */
 	public int charNum() {
 		return myCharNum;
 	}
 
-	/**
-	 * typeCheck
-	 */
 	public Type typeCheck() {
 		return new BoolType();
 	}

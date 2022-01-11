@@ -6,6 +6,7 @@ import java.util.List;
 
 import sem.ast.ASTnode;
 import sem.ast.type.Type;
+import sem.symb.SymTable;
 
 public class ExpListNode extends ASTnode {
 	public ExpListNode(List<ExpNode> S) {
@@ -15,10 +16,13 @@ public class ExpListNode extends ASTnode {
 	public int size() {
 		return myExps.size();
 	}
+	
+	public void nameAnalysis(SymTable symTab) {
+        for (ExpNode node : myExps) {
+            node.nameAnalysis(symTab);
+        }
+    }
 
-	/**
-	 * typeCheck
-	 */
 	public void typeCheck(List<Type> typeList) {
 //		int k = 0;
 //		try {

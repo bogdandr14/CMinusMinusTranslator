@@ -6,9 +6,6 @@ public class IntNode extends TypeNode {
 	public IntNode() {
 	}
 
-	/**
-	 * type
-	 */
 	public Type type() {
 		return new IntType();
 	}

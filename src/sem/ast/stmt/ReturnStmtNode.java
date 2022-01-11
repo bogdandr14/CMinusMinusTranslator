@@ -4,15 +4,19 @@ import java.io.PrintWriter;
 
 import sem.ast.exp.ExpNode;
 import sem.ast.type.Type;
+import sem.symb.SymTable;
 
 public class ReturnStmtNode extends StmtNode {
 	public ReturnStmtNode(ExpNode exp) {
 		myExp = exp;
 	}
 
-	/**
-	 * typeCheck
-	 */
+	public void nameAnalysis(SymTable symTab) {
+        if (myExp != null) {
+            myExp.nameAnalysis(symTab);
+        }
+    }
+	
 	public void typeCheck(Type retType) {
 //		if (myExp != null) { // return value given
 //			Type type = myExp.typeCheck();

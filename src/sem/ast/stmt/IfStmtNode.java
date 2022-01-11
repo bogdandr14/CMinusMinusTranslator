@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import sem.ast.decl.DeclListNode;
 import sem.ast.exp.ExpNode;
 import sem.ast.type.Type;
+import sem.symb.EmptySymTableException;
+import sem.symb.SymTable;
 
 public class IfStmtNode extends StmtNode {
 	public IfStmtNode(ExpNode exp, DeclListNode dlist, StmtListNode slist) {
@@ -13,9 +15,20 @@ public class IfStmtNode extends StmtNode {
 		myStmtList = slist;
 	}
 
-	/**
-	 * typeCheck
-	 */
+	public void nameAnalysis(SymTable symTab) {
+        myExp.nameAnalysis(symTab);
+        symTab.addScope();
+        myDeclList.nameAnalysis(symTab);
+        myStmtList.nameAnalysis(symTab);
+        try {
+            symTab.removeScope();
+        } catch (EmptySymTableException ex) {
+            System.err.println("Unexpected EmptySymTableException " +
+                               " in IfStmtNode.nameAnalysis");
+            System.exit(-1);
+        }
+    }
+	
 	public void typeCheck(Type retType) {
 		Type type = myExp.typeCheck();
 

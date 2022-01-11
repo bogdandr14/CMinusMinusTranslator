@@ -2,7 +2,10 @@ package sem.ast.exp;
 
 import java.io.PrintWriter;
 
+import sem.ErrMsg;
 import sem.ast.type.Type;
+import sem.symb.SemSym;
+import sem.symb.SymTable;
 
 public class IdNode extends ExpNode {
 	public IdNode(int lineNum, int charNum, String strVal) {
@@ -10,31 +13,32 @@ public class IdNode extends ExpNode {
 		myCharNum = charNum;
 		myStrVal = strVal;
 	}
+	
+	public void link(SemSym sym) {
+        mySym = sym;
+    }
 
-	/**
-	 * Return the name of this ID.
-	 */
 	public String name() {
 		return myStrVal;
 	}
 
-	/**
-	 * Return the line number for this ID.
-	 */
 	public int lineNum() {
 		return myLineNum;
 	}
 
-	/**
-	 * Return the char number for this ID.
-	 */
 	public int charNum() {
 		return myCharNum;
 	}
+	
+	public void nameAnalysis(SymTable symTab) {
+        SemSym sym = symTab.lookupGlobal(myStrVal);
+        if (sym == null) {
+            ErrMsg.fatal(myLineNum, myCharNum, "Undeclared identifier");
+        } else {
+            link(sym);
+        }
+    }
 
-	/**
-	 * typeCheck
-	 */
 	public Type typeCheck() {
 //        if (mySym != null) {
 //            return mySym.getType();
@@ -53,4 +57,5 @@ public class IdNode extends ExpNode {
 	private int myLineNum;
 	private int myCharNum;
 	private String myStrVal;
+	private SemSym mySym;
 }
