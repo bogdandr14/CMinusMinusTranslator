@@ -3,6 +3,7 @@ package sem.ast.exp;
 import java.io.PrintWriter;
 
 import sem.ast.type.Type;
+import sem.symb.SymTable;
 
 public class AssignNode extends ExpNode {
 	public AssignNode(ExpNode lhs, ExpNode exp) {
@@ -10,25 +11,19 @@ public class AssignNode extends ExpNode {
 		myExp = exp;
 	}
 
-	/**
-	 * Return the line number for this assignment node. The line number is the one
-	 * corresponding to the left operand.
-	 */
 	public int lineNum() {
 		return myLhs.lineNum();
 	}
 
-	/**
-	 * Return the char number for this assignment node. The char number is the one
-	 * corresponding to the left operand.
-	 */
 	public int charNum() {
 		return myLhs.charNum();
 	}
 
-	/**
-	 * typeCheck
-	 */
+	public void nameAnalysis(SymTable symTab) {
+        myLhs.nameAnalysis(symTab);
+        myExp.nameAnalysis(symTab);
+    }
+	
 	public Type typeCheck() {
 		Type typeLhs = myLhs.typeCheck();
 		Type typeExp = myExp.typeCheck();

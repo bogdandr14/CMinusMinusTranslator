@@ -13,7 +13,7 @@ public class ProgramNode extends ASTnode {
 
     public void nameAnalysis() {
         SymTable symTab = new SymTable();
-        //myDeclList.nameAnalysis(symTab);
+        myDeclList.nameAnalysis(symTab);
 
         if(symTab.lookupGlobal("main") == null) {
           ErrMsg.fatal(0, 0, "No main function");

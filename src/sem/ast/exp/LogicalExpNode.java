@@ -8,9 +8,6 @@ public abstract class LogicalExpNode extends BinaryExpNode {
 		super(exp1, exp2);
 	}
 
-	/**
-	 * typeCheck
-	 */
 	public Type typeCheck() {
 		Type type1 = myExp1.typeCheck();
 		Type type2 = myExp2.typeCheck();

@@ -10,9 +10,6 @@ public class UnaryMinusNode extends UnaryExpNode {
 		super(exp);
 	}
 
-	/**
-	 * typeCheck
-	 */
 	public Type typeCheck() {
 		Type type = myExp.typeCheck();
 		Type retType = new IntType();

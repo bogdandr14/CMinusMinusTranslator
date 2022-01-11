@@ -4,15 +4,17 @@ import java.io.PrintWriter;
 
 import sem.ast.exp.AssignNode;
 import sem.ast.type.Type;
+import sem.symb.SymTable;
 
 public class AssignStmtNode extends StmtNode {
 	public AssignStmtNode(AssignNode assign) {
 		myAssign = assign;
 	}
 
-	/**
-	 * typeCheck
-	 */
+	public void nameAnalysis(SymTable symTab) {
+        myAssign.nameAnalysis(symTab);
+    }
+	
 	public void typeCheck(Type retType) {
 		myAssign.typeCheck();
 	}

@@ -121,8 +121,9 @@ public class Translator {
 		if (ErrMsg.getErr()) {
 			return Translator.RESULT_SYNTAX_ERROR;
 		}
-
-		// astRoot.typeCheck(); // perform type check
+		
+		astRoot.nameAnalysis();
+		astRoot.typeCheck(); // perform type check
 		if (ErrMsg.getErr()) {
 			return Translator.RESULT_TYPE_ERROR;
 		}

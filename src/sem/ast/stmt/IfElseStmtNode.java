@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import sem.ast.decl.DeclListNode;
 import sem.ast.exp.ExpNode;
 import sem.ast.type.Type;
+import sem.symb.EmptySymTableException;
+import sem.symb.SymTable;
 
 public class IfElseStmtNode extends StmtNode {
 	public IfElseStmtNode(ExpNode exp, DeclListNode dlist1, StmtListNode slist1, DeclListNode dlist2,
@@ -16,9 +18,30 @@ public class IfElseStmtNode extends StmtNode {
 		myElseStmtList = slist2;
 	}
 
-	/**
-	 * typeCheck
-	 */
+	public void nameAnalysis(SymTable symTab) {
+        myExp.nameAnalysis(symTab);
+        symTab.addScope();
+        myThenDeclList.nameAnalysis(symTab);
+        myThenStmtList.nameAnalysis(symTab);
+        try {
+            symTab.removeScope();
+        } catch (EmptySymTableException ex) {
+            System.err.println("Unexpected EmptySymTableException " +
+                               " in IfStmtNode.nameAnalysis");
+            System.exit(-1);
+        }
+        symTab.addScope();
+        myElseDeclList.nameAnalysis(symTab);
+        myElseStmtList.nameAnalysis(symTab);
+        try {
+            symTab.removeScope();
+        } catch (EmptySymTableException ex) {
+            System.err.println("Unexpected EmptySymTableException " +
+                               " in IfStmtNode.nameAnalysis");
+            System.exit(-1);
+        }
+    }
+	
 	public void typeCheck(Type retType) {
 		Type type = myExp.typeCheck();
 

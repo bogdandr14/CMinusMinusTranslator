@@ -6,15 +6,19 @@ import java.util.List;
 
 import sem.ast.ASTnode;
 import sem.ast.type.Type;
+import sem.symb.SymTable;
 
 public class StmtListNode extends ASTnode {
 	public StmtListNode(List<StmtNode> S) {
 		myStmts = S;
 	}
 
-	/**
-	 * typeCheck
-	 */
+	public void nameAnalysis(SymTable symTab) {
+        for (StmtNode node : myStmts) {
+            node.nameAnalysis(symTab);
+        }
+    }
+	
 	public void typeCheck(Type retType) {
 		for (StmtNode node : myStmts) {
 			node.typeCheck(retType);
