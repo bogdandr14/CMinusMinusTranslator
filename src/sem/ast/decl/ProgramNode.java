@@ -7,6 +7,8 @@ import sem.ast.ASTnode;
 import sem.symb.SymTable;
 
 public class ProgramNode extends ASTnode {
+	private DeclListNode myDeclList;
+	
 	public ProgramNode(DeclListNode dl) {
 		myDeclList = dl;
 	}
@@ -27,8 +29,5 @@ public class ProgramNode extends ASTnode {
 	public void unparse(PrintWriter p, int indent) {
 		myDeclList.unparse(p, indent);
 	}
-
-	// 1 kid
-	private DeclListNode myDeclList;
 }
 

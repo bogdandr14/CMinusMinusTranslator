@@ -10,6 +10,12 @@ import sem.symb.EmptySymTableException;
 import sem.symb.SymTable;
 
 public class IfElseStmtNode extends StmtNode {
+	private ExpNode myExp;
+	private DeclListNode myThenDeclList;
+	private StmtListNode myThenStmtList;
+	private StmtListNode myElseStmtList;
+	private DeclListNode myElseDeclList;
+	
 	public IfElseStmtNode(ExpNode exp, DeclListNode dlist1, StmtListNode slist1, DeclListNode dlist2,
 			StmtListNode slist2) {
 		myExp = exp;
@@ -70,11 +76,4 @@ public class IfElseStmtNode extends StmtNode {
 		doIndent(p, indent);
 		p.println("}");
 	}
-
-	// 5 kids
-	private ExpNode myExp;
-	private DeclListNode myThenDeclList;
-	private StmtListNode myThenStmtList;
-	private StmtListNode myElseStmtList;
-	private DeclListNode myElseDeclList;
 }

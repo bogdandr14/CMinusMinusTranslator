@@ -3,6 +3,8 @@ package sem.ast.exp;
 import sem.symb.SymTable;
 
 public abstract class UnaryExpNode extends ExpNode {
+	protected ExpNode myExp;
+	
 	public UnaryExpNode(ExpNode exp) {
 		myExp = exp;
 	}
@@ -18,7 +20,4 @@ public abstract class UnaryExpNode extends ExpNode {
 	public void nameAnalysis(SymTable symTab) {
         myExp.nameAnalysis(symTab);
     }
-
-	// one child
-	protected ExpNode myExp;
 }

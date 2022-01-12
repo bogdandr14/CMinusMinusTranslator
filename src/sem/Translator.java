@@ -20,7 +20,6 @@ public class Translator {
 	public static final int RESULT_OTHER_ERROR = -1;
 
 	Translator(String[] args) {
-		// Parse arguments
 		if (args.length < 1) {
 			String msg = "please supply name of file to be parsed" + " and name of file for unparsed version";
 			pukeAndDie(msg);

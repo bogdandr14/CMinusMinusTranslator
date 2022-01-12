@@ -6,30 +6,23 @@ import sem.ast.type.Type;
 import sem.token.IntLitTokenVal;
 
 public class BracketAccessExpNode extends ExpNode {
+	private IdNode myLoc;
+	private IntLitTokenVal myPos;
+	private boolean badAccess;
+	
 	public BracketAccessExpNode(IdNode loc, IntLitTokenVal pos) {
 		myLoc = loc;
 		myPos = pos;
 	}
 
-	/**
-	 * Return the line number for this dot-access node. The line number is the one
-	 * corresponding to the RHS of the bracket-access.
-	 */
 	public int lineNum() {
 		return myLoc.lineNum();
 	}
 
-	/**
-	 * Return the char number for this dot-access node. The char number is the one
-	 * corresponding to the RHS of the bracket-access.
-	 */
 	public int charNum() {
 		return myLoc.charNum();
 	}
 
-	/**
-	 * typeCheck
-	 */
 	public Type typeCheck() {
 		return myLoc.typeCheck();
 	}
@@ -38,9 +31,4 @@ public class BracketAccessExpNode extends ExpNode {
 		myLoc.unparse(p, 0);
 		p.print("["+ myPos.getVal() + "]");
 	}
-
-	// 2 kids
-	private IdNode myLoc;
-	private IntLitTokenVal myPos;
-	private boolean badAccess; // to prevent multiple, cascading errors
 }

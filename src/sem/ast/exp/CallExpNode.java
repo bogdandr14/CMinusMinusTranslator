@@ -10,6 +10,9 @@ import sem.symb.FnSym;
 import sem.symb.SymTable;
 
 public class CallExpNode extends ExpNode {
+	private IdNode myId;
+	private ExpListNode myExpList;
+	
 	public CallExpNode(IdNode name, ExpListNode elist) {
 		myId = name;
 		myExpList = elist;
@@ -64,8 +67,4 @@ public class CallExpNode extends ExpNode {
 		}
 		p.print(")");
 	}
-
-	// 2 kids
-	private IdNode myId;
-	private ExpListNode myExpList; // possibly null
 }

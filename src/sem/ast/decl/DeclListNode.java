@@ -9,6 +9,8 @@ import sem.ast.ASTnode;
 import sem.symb.SymTable;
 
 public class DeclListNode extends ASTnode {
+	private List<DeclNode> myDecls;
+	
 	public DeclListNode(List<DeclNode> S) {
 		myDecls = S;
 	}
@@ -48,7 +50,4 @@ public class DeclListNode extends ASTnode {
 	public int numDecl() {
 		return myDecls.size();
 	}
-
-	// list of kids (DeclNodes)
-	private List<DeclNode> myDecls;
 }

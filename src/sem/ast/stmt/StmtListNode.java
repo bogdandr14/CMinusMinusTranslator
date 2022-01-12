@@ -9,6 +9,8 @@ import sem.ast.type.Type;
 import sem.symb.SymTable;
 
 public class StmtListNode extends ASTnode {
+	private List<StmtNode> myStmts;
+	
 	public StmtListNode(List<StmtNode> S) {
 		myStmts = S;
 	}
@@ -31,7 +33,4 @@ public class StmtListNode extends ASTnode {
 			it.next().unparse(p, indent);
 		}
 	}
-
-	// list of kids (StmtNodes)
-	private List<StmtNode> myStmts;
 }

@@ -8,6 +8,9 @@ import sem.ast.type.Type;
 import sem.symb.SymTable;
 
 public class FnBodyNode extends ASTnode {
+	private DeclListNode myDeclList;
+	private StmtListNode myStmtList;
+	
 	public FnBodyNode(DeclListNode declList, StmtListNode stmtList) {
 		myDeclList = declList;
 		myStmtList = stmtList;
@@ -30,8 +33,4 @@ public class FnBodyNode extends ASTnode {
 	public int numLocals() {
 		return myDeclList.numDecl();
 	}
-
-	// 2 kids
-	private DeclListNode myDeclList;
-	private StmtListNode myStmtList;
 }

@@ -8,6 +8,8 @@ import sem.ast.type.Type;
 import sem.symb.SymTable;
 
 public class ReadStmtNode extends StmtNode {
+	private ExpNode myExp;
+	
 	public ReadStmtNode(ExpNode e) {
 		myExp = e;
 	}
@@ -34,7 +36,4 @@ public class ReadStmtNode extends StmtNode {
 		myExp.unparse(p, 0);
 		p.println(";");
 	}
-
-	// 1 kid (actually can only be an IdNode or an ArrayExpNode)
-	private ExpNode myExp;
 }

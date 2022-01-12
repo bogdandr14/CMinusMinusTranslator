@@ -11,6 +11,8 @@ import sem.ast.type.Type;
 import sem.symb.SymTable;
 
 public class ExpListNode extends ASTnode {
+	private List<ExpNode> myExps;
+	
 	public ExpListNode(List<ExpNode> S) {
 		myExps = S;
 	}
@@ -32,7 +34,7 @@ public class ExpListNode extends ASTnode {
 				Type actualType = node.typeCheck(); // actual type of arg
 
 				if (!actualType.isErrorType()) { // if this is not an error
-					Type formalType = typeList.get(k); // get the formal type
+					Type formalType = typeList.get(k);
 					if (!formalType.equals(actualType)) {
 						ErrMsg.fatal(node.lineNum(), node.charNum(), "Type of actual does not match type of formal");
 					}
@@ -55,7 +57,4 @@ public class ExpListNode extends ASTnode {
 			}
 		}
 	}
-
-	// list of kids (ExpNodes)
-	private List<ExpNode> myExps;
 }

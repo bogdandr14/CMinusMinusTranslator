@@ -15,6 +15,13 @@ import sem.symb.SemSym;
 import sem.symb.SymTable;
 
 public class FnDeclNode extends DeclNode {
+	private TypeNode myType;
+	private IdNode myId;
+	private FormalsListNode myFormalsList;
+	private FnBodyNode myBody;
+	private int formalsSize;
+	private int localsSize;
+	
 	public FnDeclNode(TypeNode type, IdNode id, FormalsListNode formalList, FnBodyNode body) {
 		myType = type;
 		myId = id;
@@ -47,28 +54,25 @@ public class FnDeclNode extends DeclNode {
             }
         }
 
-        symTab.addScope();  // add a new scope for locals and params
+        symTab.addScope();
 
-        // process the formals
         List<Type> typeList = myFormalsList.nameAnalysis(symTab);
         if (sym != null) {
             sym.addFormals(typeList);
         }
 
-        myBody.nameAnalysis(symTab); // process the function body
+        myBody.nameAnalysis(symTab);
 
         try {
-            symTab.removeScope();  // exit scope
+            symTab.removeScope();
         } catch (EmptySymTableException ex) {
             System.err.println("Unexpected EmptySymTableException " +
                                " in FnDeclNode.nameAnalysis");
             System.exit(-1);
         }
 
-        // formals //
-    		this.formalsSize = typeList.size() * 4;
-    		// locals //
-    		this.localsSize = myBody.numLocals() * 4;
+    	this.formalsSize = typeList.size() * 4;
+    	this.localsSize = myBody.numLocals() * 4;
 
         return null;
     }
@@ -88,14 +92,4 @@ public class FnDeclNode extends DeclNode {
 		myBody.unparse(p, indent + 4);
 		p.println("}\n");
 	}
-
-	// 4 kids
-	private TypeNode myType;
-	private IdNode myId;
-	private FormalsListNode myFormalsList;
-	private FnBodyNode myBody;
-	
-	// Keep track of nodes formals and locals size //
-	private int formalsSize;
-	private int localsSize;
 }

@@ -8,6 +8,11 @@ import sem.symb.SemSym;
 import sem.symb.SymTable;
 
 public class IdNode extends ExpNode {
+	private int myLineNum;
+	private int myCharNum;
+	private String myStrVal;
+	private SemSym mySym;
+	
 	public IdNode(int lineNum, int charNum, String strVal) {
 		myLineNum = lineNum;
 		myCharNum = charNum;
@@ -57,9 +62,4 @@ public class IdNode extends ExpNode {
 	public void unparse(PrintWriter p, int indent) {
 		p.print(myStrVal);
 	}
-
-	private int myLineNum;
-	private int myCharNum;
-	private String myStrVal;
-	private SemSym mySym;
 }

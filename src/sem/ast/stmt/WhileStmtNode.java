@@ -10,6 +10,10 @@ import sem.symb.EmptySymTableException;
 import sem.symb.SymTable;
 
 public class WhileStmtNode extends StmtNode {
+	private ExpNode myExp;
+	private DeclListNode myDeclList;
+	private StmtListNode myStmtList;
+	
 	public WhileStmtNode(ExpNode exp, DeclListNode dlist, StmtListNode slist) {
 		myExp = exp;
 		myDeclList = dlist;
@@ -50,11 +54,4 @@ public class WhileStmtNode extends StmtNode {
 		doIndent(p, indent);
 		p.println("}");
 	}
-
-	// 3 kids
-	private ExpNode myExp;
-	private DeclListNode myDeclList;
-	private StmtListNode myStmtList;
-
 }
-

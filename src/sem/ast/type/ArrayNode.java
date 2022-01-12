@@ -3,6 +3,9 @@ package sem.ast.type;
 import java.io.PrintWriter;
 
 public class ArrayNode extends TypeNode {
+	private TypeNode myType;
+	private int mySize;
+	    
     public ArrayNode(TypeNode type, int arraySize) {
     	myType = type;
     	mySize = arraySize;
@@ -15,9 +18,7 @@ public class ArrayNode extends TypeNode {
     public int getSize() {
     	return mySize;
     }
-    /**
-     * type
-     */
+
     public Type type() {
         return new ArrayType(myType, mySize);
     }
@@ -25,8 +26,4 @@ public class ArrayNode extends TypeNode {
     public void unparse(PrintWriter p, int indent) {
         p.print(myType.type());
     }
-
-    // 1 kid
-    private TypeNode myType;
-    private int mySize;
 }

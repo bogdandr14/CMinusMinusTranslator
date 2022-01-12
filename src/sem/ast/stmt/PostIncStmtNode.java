@@ -8,6 +8,8 @@ import sem.ast.type.Type;
 import sem.symb.SymTable;
 
 public class PostIncStmtNode extends StmtNode {
+	private ExpNode myExp;
+	
 	public PostIncStmtNode(ExpNode exp) {
 		myExp = exp;
 	}
@@ -29,7 +31,4 @@ public class PostIncStmtNode extends StmtNode {
 		myExp.unparse(p, 0);
 		p.println("++;");
 	}
-
-	// 1 kid
-	private ExpNode myExp;
 }

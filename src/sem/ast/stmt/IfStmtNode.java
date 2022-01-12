@@ -9,7 +9,11 @@ import sem.ast.type.Type;
 import sem.symb.EmptySymTableException;
 import sem.symb.SymTable;
 
-public class IfStmtNode extends StmtNode {
+public class IfStmtNode extends StmtNode {	
+	private ExpNode myExp;
+	private DeclListNode myDeclList;
+	private StmtListNode myStmtList;
+	
 	public IfStmtNode(ExpNode exp, DeclListNode dlist, StmtListNode slist) {
 		myDeclList = dlist;
 		myExp = exp;
@@ -50,9 +54,4 @@ public class IfStmtNode extends StmtNode {
 		doIndent(p, indent);
 		p.println("}");
 	}
-
-	// e kids
-	private ExpNode myExp;
-	private DeclListNode myDeclList;
-	private StmtListNode myStmtList;
 }

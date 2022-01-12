@@ -7,6 +7,8 @@ import sem.ast.type.Type;
 import sem.symb.SymTable;
 
 public class CallStmtNode extends StmtNode {
+	private CallExpNode myCall;
+	
 	public CallStmtNode(CallExpNode call) {
 		myCall = call;
 	}
@@ -24,7 +26,4 @@ public class CallStmtNode extends StmtNode {
 		myCall.unparse(p, indent);
 		p.println(";");
 	}
-
-	// 1 kid
-	private CallExpNode myCall;
 }

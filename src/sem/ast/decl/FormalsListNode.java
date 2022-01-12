@@ -11,6 +11,8 @@ import sem.symb.SemSym;
 import sem.symb.SymTable;
 
 public class FormalsListNode extends ASTnode {
+	private List<FormalDeclNode> myFormals;
+	
 	public FormalsListNode(List<FormalDeclNode> S) {
 		myFormals = S;
 	}
@@ -40,7 +42,4 @@ public class FormalsListNode extends ASTnode {
 			}
 		}
 	}
-
-	// list of kids (FormalDeclNodes)
-	private List<FormalDeclNode> myFormals;
 }

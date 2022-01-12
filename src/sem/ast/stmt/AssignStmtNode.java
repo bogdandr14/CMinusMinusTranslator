@@ -7,6 +7,8 @@ import sem.ast.type.Type;
 import sem.symb.SymTable;
 
 public class AssignStmtNode extends StmtNode {
+	private AssignNode myAssign;
+	
 	public AssignStmtNode(AssignNode assign) {
 		myAssign = assign;
 	}
@@ -21,10 +23,7 @@ public class AssignStmtNode extends StmtNode {
 
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
-		myAssign.unparse(p, -1); // no parentheses
+		myAssign.unparse(p, -1);
 		p.println(";");
 	}
-
-	// 1 kid
-	private AssignNode myAssign;
 }

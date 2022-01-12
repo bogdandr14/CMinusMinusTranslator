@@ -8,6 +8,9 @@ import sem.ast.type.Type;
 import sem.symb.SymTable;
 
 public class AssignNode extends ExpNode {
+	private ExpNode myLhs;
+	private ExpNode myExp;
+	
 	public AssignNode(ExpNode lhs, ExpNode exp) {
 		myLhs = lhs;
 		myExp = exp;
@@ -62,8 +65,4 @@ public class AssignNode extends ExpNode {
 		if (indent != -1)
 			p.print(")");
 	}
-
-	// 2 kids
-	private ExpNode myLhs;
-	private ExpNode myExp;
 }

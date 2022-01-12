@@ -6,6 +6,10 @@ import sem.ast.type.StringType;
 import sem.ast.type.Type;
 
 public class StringLitNode extends ExpNode {
+	private int myLineNum;
+	private int myCharNum;
+	private String myStrVal;
+	
 	public StringLitNode(int lineNum, int charNum, String strVal) {
 		myLineNum = lineNum;
 		myCharNum = charNum;
@@ -27,8 +31,4 @@ public class StringLitNode extends ExpNode {
 	public void unparse(PrintWriter p, int indent) {
 		p.print(myStrVal);
 	}
-
-	private int myLineNum;
-	private int myCharNum;
-	private String myStrVal;
 }

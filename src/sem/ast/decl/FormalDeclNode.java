@@ -12,6 +12,9 @@ import sem.symb.SemSym;
 import sem.symb.SymTable;
 
 public class FormalDeclNode extends DeclNode {
+	private TypeNode myType;
+	private IdNode myId;
+	
 	public FormalDeclNode(TypeNode type, IdNode id) {
 		myType = type;
 		myId = id;
@@ -58,8 +61,4 @@ public class FormalDeclNode extends DeclNode {
 		p.print(" ");
 		p.print(myId.name());
 	}
-
-	// 2 kids
-	private TypeNode myType;
-	private IdNode myId;
 }

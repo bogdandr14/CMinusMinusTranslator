@@ -14,6 +14,12 @@ import sem.symb.SemSym;
 import sem.symb.SymTable;
 
 public class VarDeclNode extends DeclNode {
+	private TypeNode myType;
+	private IdNode myId;
+	private int mySize;
+
+	public static int NOT_ARRAY = -1;
+	
 	public VarDeclNode(TypeNode type, IdNode id, int size) {
 		myType = type;
 		myId = id;
@@ -44,7 +50,6 @@ public class VarDeclNode extends DeclNode {
 					sym = new ArraySym(myType, ((ArrayNode) myType).getSize());
 				} else {
 					sym = new SemSym(myType.type());
-					// set offset //
 					sym.setOffset(symTab.size() - 1);
 				}
 				symTab.addDecl(name, sym);
@@ -71,11 +76,4 @@ public class VarDeclNode extends DeclNode {
 		}
 		p.println(";");
 	}
-
-	// 3 kids
-	private TypeNode myType;
-	private IdNode myId;
-	private int mySize; // use value NOT_ARRAY if this is not an array type
-
-	public static int NOT_ARRAY = -1;
 }
