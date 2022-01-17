@@ -22,10 +22,13 @@ public abstract class EqualityExpNode extends BinaryExpNode {
 			ErrMsg.fatal(lineNum(), charNum(), "Equality operator applied to functions");
 			retType = new ErrorType();
 		}
-
-		if (type1.isArrayType() && type2.isArrayType()) {
-			ErrMsg.fatal(lineNum(), charNum(), "Equality operator applied to array variables");
-			retType = new ErrorType();
+		
+		if(type1.isArrayType()) {
+			type1 = ((ArrayType)type1).getType().type();
+		}
+		
+		if(type2.isArrayType()) {
+			type2 = ((ArrayType)type2).getType().type();
 		}
 
 		if (!type1.equals(type2) && !type1.isErrorType() && !type2.isErrorType()) {

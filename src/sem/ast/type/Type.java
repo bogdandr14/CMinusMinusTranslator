@@ -2,7 +2,7 @@ package sem.ast.type;
 
 /**
  * Type class and its subclasses:
- * ErrorType, IntType, BoolType, VoidType, StringType, FnType, ArrayType,
+ * ErrorType, IntType, BoolType, VoidType, StringType, FnType, ArrayDefType, ArrayPosType
  */
 public abstract class Type {
 
@@ -19,7 +19,7 @@ public abstract class Type {
     abstract public boolean equals(Type t);
 
     /**
-     * default methods for "isXXXType"
+     * default methods for "isXXXXType"
      */
     public boolean isErrorType() {
         return false;

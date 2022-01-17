@@ -24,10 +24,6 @@ public class ReadStmtNode extends StmtNode {
 		if (type.isFnType()) {
 			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Attempt to read a function");
 		}
-
-		if (type.isArrayType()) {
-			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Attempt to read a array variable");
-		}
 	}
 
 	public void unparse(PrintWriter p, int indent) {

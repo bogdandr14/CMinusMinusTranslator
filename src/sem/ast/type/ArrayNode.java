@@ -2,11 +2,15 @@ package sem.ast.type;
 
 import java.io.PrintWriter;
 
+import sem.ast.exp.ExpNode;
+import sem.ast.exp.IdNode;
+import sem.ast.exp.IntLitNode;
+
 public class ArrayNode extends TypeNode {
 	private TypeNode myType;
-	private int mySize;
+	private ExpNode mySize;
 	    
-    public ArrayNode(TypeNode type, int arraySize) {
+    public ArrayNode(TypeNode type, ExpNode arraySize) {
     	myType = type;
     	mySize = arraySize;
     }
@@ -15,7 +19,7 @@ public class ArrayNode extends TypeNode {
         return myType;
     }
 
-    public int getSize() {
+    public ExpNode getSize() {
     	return mySize;
     }
 
@@ -24,6 +28,6 @@ public class ArrayNode extends TypeNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        p.print(myType.type());
+        p.print(myType.type().toString());
     }
 }

@@ -1,3 +1,50 @@
 java -jar java-cup-11b.jar -interface -parser Parser cminusminus.cup
 
 javac -cp "E:\Facultate\4.1\Proiectarea translatoarelor\java-cup\java-cup-11b-runtime.jar;." *.java
+
+
+
+//1. Wrong:
+
+void calc(int a, void b) {
+    int v[2];
+    v[1] = a + b;
+    return v[0];
+}
+
+int main() {
+    int c;
+    
+    int a;
+    int b;
+    cin >> d;
+    c = calc(a, b);
+    return false;
+}
+
+//2. Correct
+
+int calc(int a, int b) {
+    int v[2];
+    v[0] = a + b;
+    return v[0];
+}
+
+void main() {
+    //declarare variabile
+    int a;
+    int b;
+    int c;
+    c = 0;
+    #citire variabile
+    cin >> a;
+    cin >> b;
+    c = calc(a, b);
+    /*afisare valoare*/
+    cout << c;
+    if (c == a + b) {
+        cout << "Succes!";
+    } else {
+        cout << "Eroare!";
+    }
+}

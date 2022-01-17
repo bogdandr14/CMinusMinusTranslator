@@ -3,6 +3,8 @@ package sem.ast.exp;
 import java.io.PrintWriter;
 
 import sem.ErrMsg;
+import sem.ast.type.ArrayType;
+import sem.ast.type.ErrorType;
 import sem.ast.type.Type;
 import sem.symb.SemSym;
 import sem.symb.SymTable;
@@ -50,13 +52,16 @@ public class IdNode extends ExpNode {
 
 	public Type typeCheck() {
         if (mySym != null) {
-            return mySym.getType();
+        	Type myType = mySym.getType();
+        	if(myType.isArrayType()) {
+        		myType = ((ArrayType)myType).getType().type();
+        	}
+            return myType;
         }
         else {
-            System.err.println("ID with null sym field in IdNode.typeCheck at"+ myLineNum + " " + myCharNum + " " + myStrVal);
-            System.exit(-1);
+        	ErrMsg.fatal(myLineNum, myCharNum, "ID with null sym field " + myStrVal);
+        	return new ErrorType();
         }
-		return null;
 	}
 
 	public void unparse(PrintWriter p, int indent) {

@@ -23,6 +23,10 @@ public class IntLitNode extends ExpNode {
 	public int charNum() {
 		return myCharNum;
 	}
+	
+	public int getIntVal() {
+		return myIntVal;
+	}
 
 	public Type typeCheck() {
 		return new IntType();

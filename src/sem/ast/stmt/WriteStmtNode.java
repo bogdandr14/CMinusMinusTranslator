@@ -25,10 +25,6 @@ public class WriteStmtNode extends StmtNode {
 			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Attempt to write a function");
 		}
 
-		if (type.isArrayType()) {
-			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Attempt to write an array variable");
-		}
-
 		if (type.isVoidType()) {
 			ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Attempt to write void");
 		}

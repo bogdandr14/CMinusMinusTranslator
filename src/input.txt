@@ -1,19 +1,24 @@
-int gcd ( int u, int v )
-{
-if ( v == 0 ){
-return u ;
+int calc(int a, int b) {
+    int v[2];
+    v[0] = a + b;
+    return v[0];
 }
-else{
-return gcd (v, u-u/v*v) ;
-}
-/* u-u/v*v == u mod v*/
-}
-void main()
-{
-int x[8];
-x[0] = 1;
-x[1] = 2;
-x[2] = gcd(x[0],x[1]);
-cout << x[2];
-cout << "dsa";
+
+void main() {
+    //declarare variabile
+    int a;
+    int b;
+    int c;
+    c = 0;
+    #citire variabile
+    cin >> a;
+    cin >> b;
+    c = calc(a, b);
+    /*afisare valoare*/
+    cout << c;
+    if (c == a + b) {
+        cout << "Succes!";
+    } else {
+        cout << "Eroare!";
+    }
 }

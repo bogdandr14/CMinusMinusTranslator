@@ -122,7 +122,7 @@ public class Translator {
 		}
 		
 		astRoot.nameAnalysis();
-		//astRoot.typeCheck(); // perform type check
+		astRoot.typeCheck(); // perform type check
 		if (ErrMsg.getErr()) {
 			return Translator.RESULT_TYPE_ERROR;
 		}

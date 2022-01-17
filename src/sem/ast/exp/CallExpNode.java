@@ -12,6 +12,7 @@ import sem.symb.SymTable;
 public class CallExpNode extends ExpNode {
 	private IdNode myId;
 	private ExpListNode myExpList;
+	private SymTable fnSymTab;
 	
 	public CallExpNode(IdNode name, ExpListNode elist) {
 		myId = name;
@@ -45,18 +46,15 @@ public class CallExpNode extends ExpNode {
         FnSym fnSym = (FnSym)(myId.sym());
 
         if (fnSym == null) {
-            System.err.println("null sym for Id in CallExpNode.typeCheck");
-            System.exit(-1);
+        	 System.err.println("null sym for Id in CallExpNode.typeCheck");
+             System.exit(-1);
         }
 
         if (myExpList.size() != fnSym.getNumParams()) {
             ErrMsg.fatal(myId.lineNum(), myId.charNum(),
                          "Function call with wrong number of args");
-            return fnSym.getReturnType();
         }
-
-        myExpList.typeCheck(fnSym.getParamTypes());
-		return null;
+        return fnSym.getReturnType();
 	}
 
 	public void unparse(PrintWriter p, int indent) {
