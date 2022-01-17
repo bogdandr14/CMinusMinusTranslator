@@ -1,24 +1,26 @@
-int calc(int a, int b) {
-    int v[2];
-    v[0] = a + b;
-    return v[0];
+int calc (int a,int b) {
+  int v[2];
+v[0] = a + b;
+  return 	v[0];
 }
 
 void main() {
-    //declarare variabile
-    int a;
-    int b;
-    int c;
-    c = 0;
-    #citire variabile
-    cin >> a;
-    cin >> b;
-    c = calc(a, b);
-    /*afisare valoare*/
-    cout << c;
-    if (c == a + b) {
-        cout << "Succes!";
-    } else {
-        cout << "Eroare!";
-    }
+//declarare variabile
+int a;
+int b;
+int c;
+  c = 0;
+#citire variabile
+   cin >> a;    cin >> b;
+   c = calc(a, b);
+  /* afisare valoare 
+   orice
+  */
+   cout << c;
+   if (c== a +b) {
+cout <<"Succes!";
+  }  else 
+   {
+        cout <<"Eroare!";
+   }
 }
