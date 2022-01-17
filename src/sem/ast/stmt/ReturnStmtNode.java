@@ -9,17 +9,17 @@ import sem.symb.SymTable;
 
 public class ReturnStmtNode extends StmtNode {
 	private ExpNode myExp;
-	
+
 	public ReturnStmtNode(ExpNode exp) {
 		myExp = exp;
 	}
 
 	public void nameAnalysis(SymTable symTab) {
-        if (myExp != null) {
-            myExp.nameAnalysis(symTab);
-        }
-    }
-	
+		if (myExp != null) {
+			myExp.nameAnalysis(symTab);
+		}
+	}
+
 	public void typeCheck(Type retType) {
 		if (myExp != null) { // return value given
 			Type type = myExp.typeCheck();
@@ -28,8 +28,10 @@ public class ReturnStmtNode extends StmtNode {
 				ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Return with a value in a void function");
 			}
 
-			else if (!retType.isErrorType() && !type.isErrorType() && !retType.equals(type)) {
-				ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Bad return value");
+			else if (type != null) {
+				if (!retType.isErrorType() && !type.isErrorType() && !retType.equals(type)) {
+					ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), "Bad return value");
+				}
 			}
 		}
 
