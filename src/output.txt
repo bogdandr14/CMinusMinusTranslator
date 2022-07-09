@@ -1,18 +1,23 @@
-int gcd(int u, int v) {
-    if ((v == 0)) {
-        return u;
-    }
-    else {
-        return gcd(v, (u - ((u / v) * v)));
-    }
+int calc(int a, int b) {
+    int v[2];
+    v[0] = (a + b);
+    return v[1];
 }
 
 void main() {
-    int x[8];
-    x[0] = 1;
-    x[1] = 2;
-    x[2] = gcd(x[0], x[1]);
-    cout << x[2];
-    cout << "dsa";
+    int a;
+    int b;
+    int c;
+    c = 0;
+    cin >> a;
+    cin >> b;
+    c = calc(a, b);
+    cout << c;
+    if ((c == (a + b))) {
+        cout << "Succes!";
+    }
+    else {
+        cout << "Eroare!";
+    }
 }
 

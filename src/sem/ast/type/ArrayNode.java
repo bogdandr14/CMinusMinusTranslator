@@ -3,8 +3,6 @@ package sem.ast.type;
 import java.io.PrintWriter;
 
 import sem.ast.exp.ExpNode;
-import sem.ast.exp.IdNode;
-import sem.ast.exp.IntLitNode;
 
 public class ArrayNode extends TypeNode {
 	private TypeNode myType;

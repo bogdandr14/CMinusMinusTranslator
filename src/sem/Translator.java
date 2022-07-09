@@ -22,16 +22,16 @@ public class Translator {
 	Translator(String[] args) {
 		if (args.length < 1) {
 			String msg = "please supply name of file to be parsed" + " and name of file for unparsed version";
-			pukeAndDie(msg);
+			kaput(msg);
 		}
 
 		try {
 			setInfile(args[0]);
 			setOutfile(args[1]);
 		} catch (BadInfileException e) {
-			pukeAndDie(e.getMessage());
+			kaput(e.getMessage());
 		} catch (BadOutfileException e) {
-			pukeAndDie(e.getMessage());
+			kaput(e.getMessage());
 		}
 	}
 
@@ -51,11 +51,11 @@ public class Translator {
 		}
 	}
 
-	private void pukeAndDie(String error) {
-		pukeAndDie(error, -1);
+	private void kaput(String error) {
+		kaput(error, -1);
 	}
 
-	private void pukeAndDie(String error, int retCode) {
+	private void kaput(String error, int retCode) {
 		outStream.println(error);
 		cleanup();
 		System.exit(-1);
@@ -121,7 +121,7 @@ public class Translator {
 			return Translator.RESULT_SYNTAX_ERROR;
 		}
 		
-		astRoot.nameAnalysis();
+		astRoot.nameAnalysis(); //perform name analysis
 		astRoot.typeCheck(); // perform type check
 		if (ErrMsg.getErr()) {
 			return Translator.RESULT_TYPE_ERROR;
@@ -141,11 +141,11 @@ public class Translator {
 
 		switch (resultCode) {
 		case RESULT_SYNTAX_ERROR:
-			pukeAndDie("Syntax error", resultCode);
+			kaput("Syntax error", resultCode);
 		case RESULT_TYPE_ERROR:
-			pukeAndDie("Type checking error", resultCode);
+			kaput("Type checking error", resultCode);
 		default:
-			pukeAndDie("Type checking error", RESULT_OTHER_ERROR);
+			kaput("Type checking error", RESULT_OTHER_ERROR);
 		}
 	}
 }

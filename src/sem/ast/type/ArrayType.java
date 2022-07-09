@@ -1,10 +1,9 @@
 package sem.ast.type;
 
 import sem.ast.exp.ExpNode;
-import sem.ast.exp.IdNode;
-import sem.ast.exp.IntLitNode;
+
 //**********************************************************************
-//ArrayDefType
+//ArrayType
 //**********************************************************************
 public class ArrayType extends Type {
 	private TypeNode myType;
@@ -23,8 +22,8 @@ public class ArrayType extends Type {
 		return myType;
 	}
 	
-	public int sizeArray() {
-		return ((IntLitNode)numElem).getIntVal();
+	public ExpNode getExp() {
+		return numElem;
 	}
 
 	public boolean equals(Type t) {
